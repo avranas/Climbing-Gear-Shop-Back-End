@@ -10,8 +10,8 @@ The Fake Climbing Gear Shop is an e-commerce app made by Alex Vranas. It was mad
 5. Products have an "amountInStock" which gets deducted whenever a purchase is made. When stock is low, users are warned that the product is about to sell out. When stock is empty, users are unable to add that product to their cart.
 6. Ability to filter products by category
 7. Ability to add items to a guest cart without being logged in. This data gets saved in localStorage
-8. Ability to add items to your shopping cart using your account. This data gets saved in the database
-9. Ability to view items in your shopping cart, change the quantity of your items, or remove the item
+8. Ability to add items to your shopping cart while logged in. This data gets saved in the database
+9. Ability to view items in your shopping cart, change the quantity of items, or remove the item
 10. Ability to place orders and make payments using Stripe, which is set to "Test mode" so no money will actually be spent.
 11. Ability to view your order history and details
 

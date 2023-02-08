@@ -64,8 +64,8 @@ app.use("/webhook", require("./routes/webhook"));
 
 //Test route
 app.get("/test", (req, res) => {
-  console.log("Hello world");
-  res.status(200).send("Hello world");
+  console.log("Test route");
+  res.status(200).send("Test route");
 });
 
 /*

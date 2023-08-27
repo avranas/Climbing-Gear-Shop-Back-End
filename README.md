@@ -1,4 +1,4 @@
-# The Fake Climbing Gear Shop
+# Vranas Climbing Gear
 
 The Fake Climbing Gear Shop is an e-commerce app made by Alex Vranas. It was made by the developer to practice building full stack web apps. This site does not actually sell any climbing gear, but it can do just about everything that an e-commerce app should be capable of.
 

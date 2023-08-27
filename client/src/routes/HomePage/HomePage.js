@@ -6,7 +6,7 @@ const HomePage = (props) => {
   return (
     <main id="home-page">
       <section id="splash">
-        <h1>Welcome to The Fake Climbing Gear Shop</h1>
+        <h1>Welcome to Vranas Climbing Gear</h1>
       </section>
       <section id="shop-all-products-button-holder">
         <Link to="/products/0">
@@ -18,7 +18,7 @@ const HomePage = (props) => {
       <h2 className="container">About Us</h2>
       <section className="container" id="about-us">
         <p>
-          The Fake Climbing Gear Shop is an e-commerce app made by{" "}
+          Vranas Climbing Gear is an e-commerce app made by{" "}
           <a href="https://github.com/avranas"> Alex Vranas</a>. It was made by
           the developer to practice building full stack web apps. This site does
           not actually sell any climbing gear, but it can do just about
@@ -31,7 +31,7 @@ const HomePage = (props) => {
           everything else.
         </p>
         <p>
-          <a href="https://github.com/avranas/The-Fake-Climbing-Gear-Shop">
+          <a href="https://github.com/avranas/Vranas-Climbing-Gear">
             Link to GitHub repository
           </a>
         </p>

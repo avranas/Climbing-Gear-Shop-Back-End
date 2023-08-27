@@ -1,7 +1,7 @@
 {
-  "name": "e-commerce-app",
+  "name": "Vranas Climbing Gear",
   "version": "1.0.0",
-  "description": "A full stack e-commerce app for selling things, but I haven't decided what I want to sell yet!",
+  "description": "A full-stack e-commerce app where users can browse products, complete purchases using the Stripe API, and view their order history",
   "main": "index.js",
   "engines": {
     "node": "16.15.1",
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/avranas/E-Commerce-App.git"
+    "url": "git+https://github.com/avranas/Vranas-Climbing-Gear.git"
   },
   "author": "Alex Vranas",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/avranas/E-Commerce-App/issues"
+    "url": "https://github.com/avranas/Vranas-Climbing-Gear/issues"
   },
-  "homepage": "https://the-fake-climbing-gear-shop.herokuapp.com/",
+  "homepage": "https://vranas-climbing-gear.herokuapp.com/",
   "dependencies": {
     "@octokit/rest": "^19.0.5",
     "bcrypt": "^5.0.1",

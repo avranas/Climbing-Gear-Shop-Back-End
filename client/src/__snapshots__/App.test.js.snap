@@ -78,7 +78,7 @@ exports[`renders learn react link 1`] = `
       id="splash"
     >
       <h1>
-        Welcome to The Fake Climbing Gear Shop
+        Welcome to Vranas Climbing Gear
       </h1>
     </section>
     <section
@@ -225,7 +225,7 @@ exports[`renders learn react link 1`] = `
       id="about-us"
     >
       <p>
-        The Fake Climbing Gear Shop is an e-commerce app made by
+        Vranas Climbing Gear is an e-commerce app made by
          
         <a
           href="https://github.com/avranas"
@@ -239,7 +239,7 @@ exports[`renders learn react link 1`] = `
       </p>
       <p>
         <a
-          href="https://github.com/avranas/The-Fake-Climbing-Gear-Shop"
+          href="https://github.com/avranas/Vranas-Climbing-Gear"
         >
           Link to GitHub repository
         </a>

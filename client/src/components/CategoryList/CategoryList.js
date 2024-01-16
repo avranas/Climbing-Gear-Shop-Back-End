@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from "react-router-dom";
 import shoesPic from "../../images/shoes.png";
 import harnessPic from "../../images/harness.png";

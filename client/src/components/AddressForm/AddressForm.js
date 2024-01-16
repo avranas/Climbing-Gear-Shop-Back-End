@@ -1,5 +1,5 @@
-import CountryDropdown from "../../components/Dropdown/CountryDropdown";
-import StateDropdown from "../../components/Dropdown/StateDropdown";
+import CountryDropdown from "../Dropdown/CountryDropdown";
+import StateDropdown from "../Dropdown/StateDropdown";
 import {
   forwardRef,
   useCallback,

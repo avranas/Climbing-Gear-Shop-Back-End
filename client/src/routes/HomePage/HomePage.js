@@ -1,3 +1,4 @@
+import React from 'react';
 import CategoryList from "../../components/CategoryList/CategoryList";
 import { Link } from "react-router-dom";
 import "./HomePage.css";

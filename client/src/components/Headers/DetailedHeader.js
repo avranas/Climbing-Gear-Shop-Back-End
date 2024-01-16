@@ -3,7 +3,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import HeaderUserButtons from "../HeaderButtons/HeaderButtons";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../slices/userSlice";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.css";
 import { loadCartData, selectCart } from "../../slices/cartSlice";
 import axios from "axios";

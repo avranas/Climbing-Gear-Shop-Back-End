@@ -1,3 +1,4 @@
+import React from 'react';
 import spinner from "../../images/load-wheel.png";
 import "./LoadWheel.css";
 

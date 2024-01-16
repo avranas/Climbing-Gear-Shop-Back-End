@@ -1,5 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import React from 'react';
 import DetailedHeader from "./components/Headers/DetailedHeader";
 import SimpleHeader from "./components/Headers/SimpleHeader";
 import HomePage from "./routes/HomePage/HomePage";

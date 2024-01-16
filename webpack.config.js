@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: [
@@ -91,5 +92,6 @@ module.exports = {
       // favicon: path.resolve(__dirname, './client/assets/images/mm.ico'),
       template: './client/public/index.html',
     }),
+    new Dotenv()
   ],
 };

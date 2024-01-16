@@ -1,10 +1,11 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import LoadWheel from "../../components/LoadWheel/LoadWheel";
-import { loadNewestOrder, selectOrder } from "../../slices/orderSlice";
-import penniesToUSD from "../../utils/penniesToUSD";
-import "./OrderPlacedPage.css";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import LoadWheel from '../../components/LoadWheel/LoadWheel';
+import { loadNewestOrder, selectOrder } from '../../slices/orderSlice';
+import penniesToUSD from '../../utils/penniesToUSD';
+import './OrderPlacedPage.css';
+import greenCheckmark from '../../images/checkmark2.png';
 
 const OrderPlacedPage = (props) => {
   const order = useSelector(selectOrder);
@@ -20,14 +21,14 @@ const OrderPlacedPage = (props) => {
   ) : (
     <main className="container" id="order-placed">
       <div id="order-placed-header">
-        <div id="green-checkmark"></div>
+        <img id="green-checkmark" alt="checkmark" src={greenCheckmark}></img>
         <h2>Thank you, your order has been placed.</h2>
       </div>
       <table id="receipt">
         <colgroup>
-          <col span="1" style={{ width: "60%" }} />
-          <col span="1" style={{ width: "20%" }} />
-          <col span="1" style={{ width: "20%", textAlign: "center" }} />
+          <col span="1" style={{ width: '60%' }} />
+          <col span="1" style={{ width: '20%' }} />
+          <col span="1" style={{ width: '20%', textAlign: 'center' }} />
         </colgroup>
         <thead>
           <tr>
@@ -44,7 +45,7 @@ const OrderPlacedPage = (props) => {
           {order.data.orderItems.map((i, key) => {
             return (
               <tr key={key}>
-                {i.product.optionType === "None" ? (
+                {i.product.optionType === 'None' ? (
                   <td>{`${i.product.brandName} ${i.product.productName}`}</td>
                 ) : (
                   <td>

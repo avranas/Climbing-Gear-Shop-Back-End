@@ -1,4 +1,5 @@
 import "./ProductCard.css";
+import React from "react";
 import { Link } from "react-router-dom";
 import penniesToUSD from "../../utils/penniesToUSD";
 

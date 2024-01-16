@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SearchBar.css";
+import grayX from '../../images/gray-x.png'
+import search from '../../images/search.png'
 
 const SearchBar = (props) => {
   const navigate = useNavigate();
@@ -43,8 +45,9 @@ const SearchBar = (props) => {
         id="search-button"
         data-testid="searchbar-button"
         onClick={handleSubmit}
+        style={{backgroundImage: `url(${search})`}}
       />
-      {searchBarText !== "" && <button id="clear-button" onClick={clearText} />}
+      {searchBarText !== "" && <button id="clear-button" style={{backgroundImage: `url(${grayX})`}} onClick={clearText} />}
     </div>
   );
 };

@@ -1,8 +1,11 @@
+import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectNewestCartItem } from "../../slices/newestCartItemSlice";
 import { selectProduct } from "../../slices/productSlice";
+import greenCheckmark from '../../images/checkmark2.png';
 import "./AddedToCart.css";
+
 const AddedToCart = (props) => {
   const newestCartItem = useSelector(selectNewestCartItem);
   const productData = useSelector(selectProduct).data;
@@ -13,7 +16,8 @@ const AddedToCart = (props) => {
       <div data-overlay className="overlay"></div>
       <div id="added-to-cart-page">
         <div id="added-to-cart-head">
-          <div id="green-checkmark"></div>
+        <img id="green-checkmark" alt="checkmark" src={greenCheckmark}></img>
+          
           <h2>Added to cart</h2>
         </div>
         <div id="added-to-cart-content">

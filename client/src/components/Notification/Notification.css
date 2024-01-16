@@ -41,7 +41,6 @@
 .notification-icon {
   width: 1.5rem;
   height: 1.5rem;
-  background-image: url('../../images/checkmark.png');
   background-size: cover;
   align-items: center;
 }

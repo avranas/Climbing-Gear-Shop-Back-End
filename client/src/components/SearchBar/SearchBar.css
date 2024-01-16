@@ -31,7 +31,6 @@
   right: 3rem;
   top: 1rem;
   background-color: rgba(0, 0, 0, 0);
-  background-image: url("../../images/gray-x.png");
   background-size: cover;
   width: 1rem;
   height: 1rem;
@@ -40,7 +39,6 @@
 
 #search-button {
   background-color: rgba(0, 0, 0, 0);
-  background-image: url("../../images/search.png");
   background-size: cover;
   width: 2rem;
   height: 2rem;

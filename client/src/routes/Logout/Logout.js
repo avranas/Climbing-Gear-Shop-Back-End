@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { createNotification } from "../../slices/notificationSlice";
 import { useDispatch } from "react-redux";
 import axios from "axios";

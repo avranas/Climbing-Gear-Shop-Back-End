@@ -19,7 +19,7 @@ module.exports = {
     // Required for Docker to work with dev server
     host: '0.0.0.0',
     //host: localhost,
-    port: 3000,
+    port: 3001,
     //enable HMR on the devServer
     hot: true,
     // fallback to root for other urls
@@ -37,7 +37,7 @@ module.exports = {
     // routes api fetch requests from localhost:8080/api/* (webpack dev server) to localhost:3000/api/* (where our Express server is running)
     proxy: {
       '/**': {
-        target: 'http://localhost:8080/',
+        target: 'http://localhost:3000/',
         secure: false,
       },
     },

@@ -2,11 +2,12 @@ import React from 'react';
 import CategoryList from "../../components/CategoryList/CategoryList";
 import { Link } from "react-router-dom";
 import "./HomePage.css";
-
+import splash from '../../images/splash.jpg'
 const HomePage = (props) => {
   return (
     <main id="home-page">
-      <section id="splash">
+      <section id="splash" style={{backgroundImage: `url(${splash})`}}>
+        
         <h1>Welcome to Vranas Climbing Gear</h1>
       </section>
       <section id="shop-all-products-button-holder">

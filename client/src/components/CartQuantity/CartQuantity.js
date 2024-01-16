@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Quantity/Quantity.css";
 
 //For use in the Cart page

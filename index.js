@@ -9,6 +9,8 @@ const morgan = require("morgan");
 const nodeEnv = process.env.NODE_ENV;
 const path = require("path");
 
+console.log('process.env.NODE_ENV', process.env.NODE_ENV)
+
 app.use(
   cors({
     allowedHeaders: ["Content-Type"],
@@ -46,7 +48,7 @@ app.use("/images", express.static(__dirname + "/assets/images"));
 //Serve static files from the React frontend app
 console.log("nodeEnv:", nodeEnv);
 if (nodeEnv === "production") {
-  app.use(express.static(path.join(__dirname, "client/build")));
+  app.use(express.static(path.join(__dirname, "dist")));
 }
 
 app.use("/auth", require("./routes/auth"));
@@ -92,7 +94,7 @@ app.use((err, req, res, next) => {
 */
 if (nodeEnv === "production") {
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client/build/index.html"));
+    res.sendFile(path.join(__dirname, "dist/index.html"));
   });
 }
 app.listen(PORT, () => {

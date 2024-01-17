@@ -85,6 +85,10 @@
   font-size: 1rem;
 }
 
+#cart-icon-container {
+  position: relative;
+}
+
 @media only screen and (max-width: 770px) {
   #header-user-buttons {
     text-align: center;
@@ -104,13 +108,13 @@
 
   #double-digit {
     position: absolute;
-    top: -0.9rem;
+    top: -0.7rem;
     left: 0.34rem;
   }
 
   #single-digit {
     position: absolute;
-    top: -1.02rem;
+    top: -0.7rem;
     left: 0.585rem;
   }
 
@@ -124,6 +128,12 @@
 
   .header-item {
     padding: 0 0.25rem 0 0.25rem;
+  }
+
+  .logo {
+    height: 3.3rem;
+    width: 6.37rem;
+    background-size: cover;
   }
 }
 
@@ -150,13 +160,11 @@
 
   #double-digit {
     position: absolute;
-    top: -0.87rem;
     left: 0.27rem;
   }
 
   #single-digit {
     position: absolute;
-    top: -0.9rem;
     left: 0.5rem;
   }
 

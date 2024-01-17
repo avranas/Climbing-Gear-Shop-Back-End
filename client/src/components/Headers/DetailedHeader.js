@@ -71,8 +71,8 @@ const DetailedHeader = (props) => {
         </div>
         <div className="header-item">
           <Link to="/cart">
-            <img src={cartIcon} id="cart-icon" alt="cart">
-            </img>
+            <div id="cart-icon-container">
+              <img src={cartIcon} id="cart-icon" alt="cart"></img>
               {cartData.itemCount === -1 ? null : cartData.itemCount > 99 ? (
                 <div className="cart-items-count" id="double-digit">
                   99+
@@ -86,6 +86,7 @@ const DetailedHeader = (props) => {
                   {cartData.itemCount}
                 </div>
               ) : null}
+            </div>
           </Link>
         </div>
       </div>

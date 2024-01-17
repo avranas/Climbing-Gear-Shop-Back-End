@@ -1,5 +1,6 @@
 import penniesToUSD from "../../utils/penniesToUSD";
 import "./OrderSummary.css";
+import React from 'react';
 
 const OrderSummary = (props) => {
   const shippingFee = 0;

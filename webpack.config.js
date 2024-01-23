@@ -19,7 +19,7 @@ module.exports = {
     // Required for Docker to work with dev server
     host: '0.0.0.0',
     //host: localhost,
-    port: 3001,
+    port: 3002,
     //enable HMR on the devServer
     hot: true,
     // fallback to root for other urls

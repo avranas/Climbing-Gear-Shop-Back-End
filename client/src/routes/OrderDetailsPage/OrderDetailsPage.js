@@ -1,16 +1,16 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import LoadWheel from "../../components/LoadWheel/LoadWheel";
-import { loadOrder, selectOrder } from "../../slices/orderSlice";
-import getFullUTCDay from "../../utils/getFullDay";
-import penniesToUSD from "../../utils/penniesToUSD";
-import "./OrderDetailsPage.css";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import LoadWheel from '../../components/LoadWheel/LoadWheel';
+import { loadOrder, selectOrder } from '../../slices/orderSlice';
+import getFullUTCDay from '../../utils/getFullDay';
+import penniesToUSD from '../../utils/penniesToUSD';
+import './OrderDetailsPage.css';
 
 const OrderDetailsPage = (props) => {
   const { id } = useParams();
   const order = useSelector(selectOrder);
-  const serverUrl = process.env.REACT_APP_SERVER_URL;
+  const serverUrl = config.APP_URL;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

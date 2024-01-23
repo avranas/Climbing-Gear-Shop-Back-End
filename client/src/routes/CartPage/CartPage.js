@@ -24,7 +24,7 @@ const CartPage = (props) => {
   const navigate = useNavigate();
   const cart = useSelector(selectCart);
   const cartData = cart.data;
-  const serverUrl = process.env.REACT_APP_SERVER_URL;
+  const serverUrl = config.APP_URL;
   const [quantityChangeError, setQuantityChangeError] = useState("");
 
   const handleQuantitySelection = async (e, cartItem) => {

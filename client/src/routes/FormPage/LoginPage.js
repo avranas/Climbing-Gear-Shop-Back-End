@@ -1,16 +1,16 @@
-import redX from "../../images/red-x.png";
-import { Link, useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import "./FormPage.css";
-import { createNotification } from "../../slices/notificationSlice";
-import axios from "axios";
+import redX from '../../images/red-x.png';
+import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import './FormPage.css';
+import { createNotification } from '../../slices/notificationSlice';
+import axios from 'axios';
 import {
   loadCartData,
   moveGuestCartItemsToUserCart,
-} from "../../slices/cartSlice";
-import github from "../../images/github.png";
-import google from "../../images/google.png";
+} from '../../slices/cartSlice';
+import github from '../../images/github.png';
+import google from '../../images/google.png';
 /*
   Next tells the login page where to navigate to after a successful login
   Error is a code that tells the login page what error page to display to a user
@@ -18,31 +18,31 @@ import google from "../../images/google.png";
 const LoginPage = ({ next, error }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const serverUrl = process.env.REACT_APP_SERVER_URL;
-  const [userEmailInput, setUserEmailInput] = useState("");
-  const [passwordInput, setPasswordInput] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [invalidLoginError, setInvalidLoginError] = useState("");
+  const serverUrl = config.APP_URL;
+  const [userEmailInput, setUserEmailInput] = useState('');
+  const [passwordInput, setPasswordInput] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [invalidLoginError, setInvalidLoginError] = useState('');
   const handleUserEmailChange = (e) => {
     setUserEmailInput(e.target.value);
-    setEmailError("");
+    setEmailError('');
   };
 
   const handlePasswordChange = (e) => {
     setPasswordInput(e.target.value);
-    setPasswordError("");
+    setPasswordError('');
   };
 
   const handleSubmit = async (e) => {
     try {
       let errorFound = false;
-      if (userEmailInput === "") {
-        setEmailError("This field is required");
+      if (userEmailInput === '') {
+        setEmailError('This field is required');
         errorFound = true;
       }
-      if (passwordInput === "") {
-        setPasswordError("This field is required");
+      if (passwordInput === '') {
+        setPasswordError('This field is required');
         errorFound = true;
       }
       if (errorFound) {
@@ -52,26 +52,26 @@ const LoginPage = ({ next, error }) => {
         userEmail: userEmailInput,
         password: passwordInput,
       };
-      await axios.post("/server-login", requestBody);
+      await axios.post('/server-login', requestBody);
       //If the passwords don't match, an error will be thrown
-      const userData = await axios.get("/user");
-      dispatch({ type: "user/loadUserData", payload: userData.data });
+      const userData = await axios.get('/user');
+      dispatch({ type: 'user/loadUserData', payload: userData.data });
       await moveGuestCartItemsToUserCart();
 
       if (next) {
         navigate(`/${next}`);
       } else {
-        navigate("/");
+        navigate('/');
       }
-      createNotification(dispatch, "You are now logged in!");
+      createNotification(dispatch, 'You are now logged in!');
       loadCartData(dispatch);
     } catch (err) {
       console.log(err);
-      if (err.response.data === "You need to be logged out do that.") {
-        setInvalidLoginError("You are already logged in!");
-      } else if (err.response.data === "Unauthorized") {
-        setInvalidLoginError("Email or password was incorrect!");
-        setPasswordInput("");
+      if (err.response.data === 'You need to be logged out do that.') {
+        setInvalidLoginError('You are already logged in!');
+      } else if (err.response.data === 'Unauthorized') {
+        setInvalidLoginError('Email or password was incorrect!');
+        setPasswordInput('');
       }
       console.log(err);
     }
@@ -80,7 +80,7 @@ const LoginPage = ({ next, error }) => {
   //Load the page with an error message
   useEffect(() => {
     switch (error) {
-      case "1":
+      case '1':
         setInvalidLoginError(
           `The email with the associated account is already registered.`
         );
@@ -107,16 +107,16 @@ const LoginPage = ({ next, error }) => {
   //Navigate to the home page if you're already logged in
   useEffect(() => {
     const checkNotAuthenticated = async () => {
-      const response = await axios("/authenticated");
+      const response = await axios('/authenticated');
       if (response.data) {
-        navigate("/");
+        navigate('/');
       }
     };
     checkNotAuthenticated();
   }, [navigate]);
 
   const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       handleSubmit();
     }
   };

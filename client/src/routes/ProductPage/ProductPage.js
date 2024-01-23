@@ -30,8 +30,8 @@ const ProductPage = (props) => {
   const [addedToCartWindowOpen, setAddedToCartWindowOpen] = useState(false);
   const [quantityDisabled, setQuantityDisabled] = useState(true);
   const quantitySelectRef = useRef();
-  const serverUrl = process.env.REACT_APP_SERVER_URL;
-
+  const serverUrl = config.APP_URL;
+  
   const addToCart = async () => {
     //options[0] is 'Select'
     if (optionSelection === options[0]) {

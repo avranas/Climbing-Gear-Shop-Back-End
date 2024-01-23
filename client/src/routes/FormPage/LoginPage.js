@@ -11,6 +11,8 @@ import {
 } from '../../slices/cartSlice';
 import github from '../../images/github.png';
 import google from '../../images/google.png';
+import config from "../../config";
+
 /*
   Next tells the login page where to navigate to after a successful login
   Error is a code that tells the login page what error page to display to a user

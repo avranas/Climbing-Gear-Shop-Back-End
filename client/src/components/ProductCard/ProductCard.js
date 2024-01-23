@@ -2,6 +2,7 @@ import "./ProductCard.css";
 import React from "react";
 import { Link } from "react-router-dom";
 import penniesToUSD from "../../utils/penniesToUSD";
+import config from "../../config";
 
 //Renders a card for a single product
 //Props are productName, brandName, description, price, and imageURL,

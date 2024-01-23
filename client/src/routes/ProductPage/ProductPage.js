@@ -13,6 +13,7 @@ import { loadCartData } from "../../slices/cartSlice";
 import QuantitySelection from "../../components/Quantity/Quantity";
 import { v4 as uuidv4 } from "uuid";
 import LoadWheel from "../../components/LoadWheel/LoadWheel";
+import config from "../../config";
 
 //Props are productName, brandName, description, price, and imageURL,
 const ProductPage = (props) => {
@@ -31,7 +32,7 @@ const ProductPage = (props) => {
   const [quantityDisabled, setQuantityDisabled] = useState(true);
   const quantitySelectRef = useRef();
   const serverUrl = config.APP_URL;
-  
+
   const addToCart = async () => {
     //options[0] is 'Select'
     if (optionSelection === options[0]) {

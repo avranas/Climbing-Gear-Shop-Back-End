@@ -13,6 +13,7 @@ import CartQuantity from "../../components/CartQuantity/CartQuantity";
 import axios from "axios";
 import redX from "../../images/red-x.png";
 import LoadWheel from "../../components/LoadWheel/LoadWheel";
+import config from "../../config";
 
 /*
   Loading cart data with a useEffect is not necessary, because the

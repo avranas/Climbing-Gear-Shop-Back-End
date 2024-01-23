@@ -5,6 +5,7 @@ import LoadWheel from '../../components/LoadWheel/LoadWheel';
 import { loadOrder, selectOrder } from '../../slices/orderSlice';
 import getFullUTCDay from '../../utils/getFullDay';
 import penniesToUSD from '../../utils/penniesToUSD';
+import config from "../../config";
 import './OrderDetailsPage.css';
 
 const OrderDetailsPage = (props) => {

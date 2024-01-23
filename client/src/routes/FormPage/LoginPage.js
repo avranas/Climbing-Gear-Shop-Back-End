@@ -11,7 +11,6 @@ import {
 } from '../../slices/cartSlice';
 import github from '../../images/github.png';
 import google from '../../images/google.png';
-import config from "../../config";
 
 /*
   Next tells the login page where to navigate to after a successful login
@@ -20,7 +19,6 @@ import config from "../../config";
 const LoginPage = ({ next, error }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const serverUrl = config.APP_URL;
   const [userEmailInput, setUserEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -125,7 +123,7 @@ const LoginPage = ({ next, error }) => {
 
   const loginWithGitHub = async (e) => {
     try {
-      window.location.href = `${serverUrl}/auth/github`;
+      window.location.href = `/auth/github`;
     } catch (err) {
       console.log(err);
     }
@@ -133,7 +131,7 @@ const LoginPage = ({ next, error }) => {
 
   const loginWithGoogle = async (e) => {
     try {
-      window.location.href = `${serverUrl}/auth/google`;
+      window.location.href = `/auth/google`;
     } catch (err) {
       console.log(err);
     }

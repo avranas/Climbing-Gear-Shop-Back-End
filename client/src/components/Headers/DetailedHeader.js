@@ -44,7 +44,7 @@ const DetailedHeader = (props) => {
       <div id="detailed-header-content">
         <Link to="/">
           <picture>
-            <source media="(max-width: 512px)" srcset={smolLogo} />
+            <source media="(max-width: 512px)" srcSet={smolLogo} />
             <img
               src={logo}
               alt="logo"

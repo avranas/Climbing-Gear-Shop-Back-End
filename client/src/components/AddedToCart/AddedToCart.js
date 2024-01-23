@@ -5,12 +5,10 @@ import { selectNewestCartItem } from "../../slices/newestCartItemSlice";
 import { selectProduct } from "../../slices/productSlice";
 import greenCheckmark from '../../images/checkmark2.png';
 import "./AddedToCart.css";
-import config from "../../config";
 
 const AddedToCart = (props) => {
   const newestCartItem = useSelector(selectNewestCartItem);
   const productData = useSelector(selectProduct).data;
-  const serverUrl = config.APP_URL;
   
   return (
     <main className="container">
@@ -26,7 +24,7 @@ const AddedToCart = (props) => {
             <img
               alt="product"
               src={`
-                ${serverUrl}/images/${productData.smallImageFile1}
+                $/images/${productData.smallImageFile1}
               `}
             />
           </div>

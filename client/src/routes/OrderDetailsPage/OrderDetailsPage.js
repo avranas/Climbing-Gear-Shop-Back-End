@@ -5,13 +5,11 @@ import LoadWheel from '../../components/LoadWheel/LoadWheel';
 import { loadOrder, selectOrder } from '../../slices/orderSlice';
 import getFullUTCDay from '../../utils/getFullDay';
 import penniesToUSD from '../../utils/penniesToUSD';
-import config from "../../config";
 import './OrderDetailsPage.css';
 
 const OrderDetailsPage = (props) => {
   const { id } = useParams();
   const order = useSelector(selectOrder);
-  const serverUrl = config.APP_URL;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -124,7 +122,7 @@ const OrderDetailsPage = (props) => {
                   <Link to={`/product/${i.product.id}`}>
                     <div className="order-item-image">
                       <img
-                        src={`${serverUrl}/images/${i.product.smallImageFile1}`}
+                        src={`/images/${i.product.smallImageFile1}`}
                         alt="order item"
                       />
                     </div>

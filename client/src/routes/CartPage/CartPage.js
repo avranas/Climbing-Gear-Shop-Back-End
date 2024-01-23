@@ -25,7 +25,6 @@ const CartPage = (props) => {
   const navigate = useNavigate();
   const cart = useSelector(selectCart);
   const cartData = cart.data;
-  const serverUrl = config.APP_URL;
   const [quantityChangeError, setQuantityChangeError] = useState("");
 
   const handleQuantitySelection = async (e, cartItem) => {
@@ -109,7 +108,7 @@ const CartPage = (props) => {
               <div className="cart-item-image">
                 <Link to={`/product/${i.product.id}`}>
                   <img
-                    src={`${serverUrl}/images/${i.product.smallImageFile1}`}
+                    src={`/images/${i.product.smallImageFile1}`}
                     alt="cart item"
                   />
                 </Link>

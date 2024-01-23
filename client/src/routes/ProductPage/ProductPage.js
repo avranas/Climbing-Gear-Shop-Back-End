@@ -13,7 +13,6 @@ import { loadCartData } from "../../slices/cartSlice";
 import QuantitySelection from "../../components/Quantity/Quantity";
 import { v4 as uuidv4 } from "uuid";
 import LoadWheel from "../../components/LoadWheel/LoadWheel";
-import config from "../../config";
 
 //Props are productName, brandName, description, price, and imageURL,
 const ProductPage = (props) => {
@@ -31,7 +30,6 @@ const ProductPage = (props) => {
   const [addedToCartWindowOpen, setAddedToCartWindowOpen] = useState(false);
   const [quantityDisabled, setQuantityDisabled] = useState(true);
   const quantitySelectRef = useRef();
-  const serverUrl = config.APP_URL;
 
   const addToCart = async () => {
     //options[0] is 'Select'
@@ -236,7 +234,7 @@ const ProductPage = (props) => {
           <section id="product-image">
             <img
               alt="product"
-              src={`${serverUrl}/images/${productData.largeImageFile}`}
+              src={`/images/${productData.largeImageFile}`}
             />
           </section>
           <div id="product-page-spacer"></div>

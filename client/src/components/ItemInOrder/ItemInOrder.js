@@ -9,6 +9,7 @@ const ItemInOrder = (props) => {
   useEffect(() => {
     async function getSignedUrl() {
       try {
+        setImageUrl("");
         let res = await axios.get(`/generate-presigned-url/${props.imgFile}`);
         setImageUrl(res.data.url);
       } catch (err) {

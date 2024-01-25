@@ -15,6 +15,7 @@ const AddedToCart = (props) => {
   useEffect(() => {
     async function getSignedUrl() {
       try {
+        setImageUrl("");
         let res = await axios.get(
           `/generate-presigned-url/${productData.smallImageFile1}`
         );

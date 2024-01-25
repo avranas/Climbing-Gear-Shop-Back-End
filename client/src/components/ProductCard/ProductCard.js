@@ -12,6 +12,8 @@ const ProductCard = (props) => {
   useEffect(() => {
     async function getSignedUrls() {
       try {
+        setImageUrl1('');
+        setImageUrl2('');
         let res = await axios.get(
           `/generate-presigned-url/${props.smallImageFile1}`
         );

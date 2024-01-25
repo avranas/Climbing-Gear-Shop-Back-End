@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import getFullUTCDay from "../../utils/getFullDay";
 import penniesToUSD from "../../utils/penniesToUSD";
 import "./OrderCard.css";
+import React from "react";
 
 const productListLimit = 3;
 

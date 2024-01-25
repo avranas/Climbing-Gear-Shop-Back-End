@@ -25,7 +25,7 @@ const ProductCard = (props) => {
       }
     }
     getSignedUrls();
-  }, []);
+  }, [props.smallImageFile1, props.smallImageFile2]);
 
   return (
     <li className="product-card styled-box styled-link-box">

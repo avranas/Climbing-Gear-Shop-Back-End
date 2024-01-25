@@ -44,7 +44,7 @@ const ProductPage = (props) => {
       }
     }
     getSignedUrl();
-  }, []);
+  }, [productData]);
 
   const addToCart = async () => {
     //options[0] is 'Select'

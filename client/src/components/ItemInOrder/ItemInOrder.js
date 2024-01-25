@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import penniesToUSD from "../../utils/penniesToUSD";
+import axios from 'axios';
 
-const OrderItem = (props) => {
+const ItemInOrder = (props) => {
 
   const [imageUrl, setImageUrl] = useState('');
 
@@ -41,4 +42,4 @@ const OrderItem = (props) => {
   );
 };
 
-export default OrderItem;
+export default ItemInOrder;

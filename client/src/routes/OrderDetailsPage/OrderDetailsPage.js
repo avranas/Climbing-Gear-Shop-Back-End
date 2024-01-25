@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import LoadWheel from '../../components/LoadWheel/LoadWheel';
 import { loadOrder, selectOrder } from '../../slices/orderSlice';
 import getFullUTCDay from '../../utils/getFullDay';
 import penniesToUSD from '../../utils/penniesToUSD';
 import './OrderDetailsPage.css';
-import axios from 'axios';
 
 const OrderDetailsPage = (props) => {
   const { id } = useParams();
@@ -120,7 +119,7 @@ const OrderDetailsPage = (props) => {
             {order.data.orderItems.map((i, key) => {
               return (
                 <div key={key}>
-                  <OrderItem 
+                  <ItemInOrder 
                     imgFile={i.product.smallImageFile1}
                     productId={i.product.id}
                     optionType={i.product.optionType}

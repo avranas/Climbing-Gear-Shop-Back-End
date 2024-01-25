@@ -14,6 +14,18 @@ import axios from 'axios';
 const ItemInCart = (props) => {
   const [quantityChangeError, setQuantityChangeError] = useState('');
   const dispatch = useDispatch();
+  const [imageUrl, setImageUrl] = useState('');
+  useEffect(() => {
+    async function getSignedUrl() {
+      try {
+        let res = await axios.get(`/generate-presigned-url/${props.imgFile}`);
+        setImageUrl(res.data.url);
+      } catch (err) {
+        console.log('Error fetching signed URL', err);
+      }
+    }
+    getSignedUrl();
+  }, []);
 
   const deleteItem = async (e) => {
     try {
@@ -65,7 +77,7 @@ const ItemInCart = (props) => {
     <div className="cart-item">
       <div className="cart-item-image">
         <Link to={`/product/${props.productId}`}>
-          <img src={`/images/${props.imgFile}`} alt="cart item" />
+          <img src={imageUrl} alt="cart item" />
         </Link>
       </div>
       <div className="cart-item-content">

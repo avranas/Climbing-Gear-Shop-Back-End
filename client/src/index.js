@@ -9,7 +9,6 @@ import store from "./store";
 
 // Hides images before they've had a chance to load
 document.addEventListener("DOMContentLoaded", function(event) {
-  console.log('hiding broken images')
   document.querySelectorAll('img').forEach(function(img){
    img.onerror = function(){this.style.display='none';};
   })

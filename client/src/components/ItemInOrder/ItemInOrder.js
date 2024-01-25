@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import penniesToUSD from "../../utils/penniesToUSD";
+import penniesToUSD from '../../utils/penniesToUSD';
 import axios from 'axios';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const ItemInOrder = (props) => {
-
   const [imageUrl, setImageUrl] = useState('');
 
   useEffect(() => {
     async function getSignedUrl() {
       try {
-        let res = await axios.get(
-          `/generate-presigned-url/${props.imgFile}`
-        );
+        let res = await axios.get(`/generate-presigned-url/${props.imgFile}`);
         setImageUrl(res.data.url);
       } catch (err) {
         console.log('Error fetching signed URL', err);
@@ -22,10 +19,10 @@ const ItemInOrder = (props) => {
   }, []);
 
   return (
-    <div className="order-item" >
+    <div className="order-item">
       <Link to={`/product/${props.productId}`}>
         <div className="order-item-image">
-          <img src={imageUrl} alt="order item" />
+          {imageUrl && <img src={imageUrl} alt="order item" />}
         </div>
       </Link>
       <ul className="order-item-content">

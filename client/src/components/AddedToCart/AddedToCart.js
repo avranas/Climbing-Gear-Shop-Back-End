@@ -5,7 +5,7 @@ import { selectNewestCartItem } from '../../slices/newestCartItemSlice';
 import { selectProduct } from '../../slices/productSlice';
 import greenCheckmark from '../../images/checkmark2.png';
 import './AddedToCart.css';
-import axios from "axios";
+import axios from 'axios';
 
 const AddedToCart = (props) => {
   const newestCartItem = useSelector(selectNewestCartItem);
@@ -37,7 +37,8 @@ const AddedToCart = (props) => {
         </div>
         <div id="added-to-cart-content">
           <div id="added-to-cart-image">
-            <img alt="product" src={imageUrl} />
+            {' '}
+            {imageUrl && <img alt="product" src={imageUrl} />}
           </div>
           <div id="added-to-cart-details">
             <p>{productData.brandName}</p>

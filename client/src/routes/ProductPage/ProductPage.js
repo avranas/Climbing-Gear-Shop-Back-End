@@ -71,7 +71,6 @@ const ProductPage = (props) => {
       if (loggedInCheck.data) {
         //Add to cart in server
         const response = await axios.post('/server-cart', newCartItem);
-        console.log(response);
         if (response.data === 'Not enough in stock. Setting to the max.') {
           setOutOfStockError(response.data);
           loadCartData(dispatch);
@@ -247,7 +246,7 @@ const ProductPage = (props) => {
       ) : (
         <div id="product" className="styled-box">
           <section id="product-image">
-            <img alt="product" src={imageUrl} />
+            {imageUrl && <img alt="product" src={imageUrl} />}
           </section>
           <div id="product-page-spacer"></div>
           <section id="product-info">

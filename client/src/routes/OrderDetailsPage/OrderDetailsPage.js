@@ -119,7 +119,7 @@ const OrderDetailsPage = (props) => {
           <div id="order-details-items">
             {order.data.orderItems.map((i, key) => {
               return (
-                <div key={key}>
+                <div key={`order-detail-${key}`}>
                   <ItemInOrder 
                     imgFile={i.product.smallImageFile1}
                     productId={i.product.id}

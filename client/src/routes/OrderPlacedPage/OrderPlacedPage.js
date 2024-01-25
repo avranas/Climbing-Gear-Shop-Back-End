@@ -44,7 +44,7 @@ const OrderPlacedPage = (props) => {
         <tbody>
           {order.data.orderItems.map((i, key) => {
             return (
-              <tr key={key}>
+              <tr key={`order-item-${key}`}>
                 {i.product.optionType === 'None' ? (
                   <td>{`${i.product.brandName} ${i.product.productName}`}</td>
                 ) : (

@@ -16,7 +16,7 @@ const ItemInOrder = (props) => {
       }
     }
     getSignedUrl();
-  }, []);
+  }, [props.imgFile]);
 
   return (
     <div className="order-item">

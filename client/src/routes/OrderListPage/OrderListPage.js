@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import LoadWheel from "../../components/LoadWheel/LoadWheel";
-import NavigationButtons from "../../components/NavButtons/NavButtons";
-import OrderCard from "../../components/OrderCard/OrderCard";
-import { selectOrdersList, loadOrders } from "../../slices/ordersListSlice";
-import "./OrderListPage.css";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import LoadWheel from '../../components/LoadWheel/LoadWheel';
+import NavigationButtons from '../../components/NavButtons/NavButtons';
+import OrderCard from '../../components/OrderCard/OrderCard';
+import { selectOrdersList, loadOrders } from '../../slices/ordersListSlice';
+import './OrderListPage.css';
 
 const OrdersList = (props) => {
   const ordersList = useSelector(selectOrdersList);
@@ -21,14 +21,14 @@ const OrdersList = (props) => {
   let lastOrder = ordersPerPage;
   let prevDisabled = false;
   let nextDisabled = false;
-  if (typeof Number(page) === "number") {
+  if (typeof Number(page) === 'number') {
     firstOrder = Number(page) * ordersPerPage;
     lastOrder = (Number(page) + 1) * ordersPerPage;
   }
   if (lastOrder >= ordersList.data.length) {
     nextDisabled = true;
   }
-  if (page === "0") {
+  if (page === '0') {
     prevDisabled = true;
   }
   let nextLink = `/orders/${Number(page) + 1}`;
@@ -43,7 +43,11 @@ const OrdersList = (props) => {
           <h2>Order History</h2>
           <ul>
             {ordersList.data.slice(firstOrder, lastOrder).map((i, key) => {
-              return <OrderCard key={key} order={i} />;
+              return (
+                <div key={`order-${key}`}>
+                  <OrderCard order={i} />
+                </div>
+              );
             })}
           </ul>
         </div>

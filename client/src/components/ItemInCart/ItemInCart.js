@@ -25,7 +25,7 @@ const ItemInCart = (props) => {
       }
     }
     getSignedUrl();
-  }, []);
+  }, [props.imgFile]);
 
   const deleteItem = async (e) => {
     try {

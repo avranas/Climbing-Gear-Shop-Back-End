@@ -35,7 +35,7 @@ const OrderCard = (props) => {
           {props.order.orderItems.map((j, key) => {
             return key === productListLimit &&
               props.order.orderItems.length > productListLimit + 1 ? (
-              <div key={key}>
+              <div key={`order-item-${key}`}>
                 {
                   <li>{`+${
                     props.order.orderItems.length - productListLimit

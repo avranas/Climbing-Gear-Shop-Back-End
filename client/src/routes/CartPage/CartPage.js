@@ -50,7 +50,7 @@ const CartPage = (props) => {
       ) : (
         cartData.cartItems.map((i, key) => {
           return (
-            <div key={key}>
+            <div key={`cart-item-${key}`}>
               <ItemInCart
                 id={i.id}
                 productId={i.product.id}

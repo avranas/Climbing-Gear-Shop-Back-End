@@ -24,7 +24,7 @@ const AddedToCart = (props) => {
       }
     }
     getSignedUrl();
-  }, []);
+  }, [productData.smallImageFile1]);
 
   return (
     <main className="container">

@@ -85,7 +85,9 @@ function App() {
         </Route>
       </Routes>
       {notifications.map((i, key) => (
+        <div key={`notification-${key}`}>
         <Notification message={i.message} id={i.id} key={key} />
+        </div>
       ))}
       <footer>
         <div id="footer-spacer"></div>

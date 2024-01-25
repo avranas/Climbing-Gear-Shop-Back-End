@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import ProductCard from "../../components/ProductCard/ProductCard";
-import ProductNavigationBar from "../../components/ProductNavBar/ProductNavBar";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import ProductCard from '../../components/ProductCard/ProductCard';
+import ProductNavigationBar from '../../components/ProductNavBar/ProductNavBar';
 import {
   selectProductList,
   loadProductList,
-} from "../../slices/productListSlice";
-import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter";
-import "./ProductListPage.css";
-import NavigationButtons from "../../components/NavButtons/NavButtons";
-import LoadWheel from "../../components/LoadWheel/LoadWheel";
+} from '../../slices/productListSlice';
+import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
+import './ProductListPage.css';
+import NavigationButtons from '../../components/NavButtons/NavButtons';
+import LoadWheel from '../../components/LoadWheel/LoadWheel';
 
 const ProductListPage = ({ category, search }) => {
   const dispatch = useDispatch();
@@ -32,24 +32,24 @@ const ProductListPage = ({ category, search }) => {
     const sorted = unsorted.sort((a, b) => {
       const textA = a.productName.toUpperCase();
       const textB = b.productName.toUpperCase();
-      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+      return textA < textB ? -1 : textA > textB ? 1 : 0;
     });
     setSortedProducts(sorted);
-  }, [products.data])
+  }, [products.data]);
 
   const productsPerPage = 12;
   let firstProduct = 0;
   let lastProduct = productsPerPage;
   let prevDisabled = false;
   let nextDisabled = false;
-  if (typeof Number(page) === "number") {
+  if (typeof Number(page) === 'number') {
     firstProduct = Number(page) * productsPerPage;
     lastProduct = (Number(page) + 1) * productsPerPage;
   }
   if (lastProduct >= products.data.length) {
     nextDisabled = true;
   }
-  if (page === "0") {
+  if (page === '0') {
     prevDisabled = true;
   }
   let nextLink = `/products/${Number(page) + 1}`;
@@ -86,20 +86,22 @@ const ProductListPage = ({ category, search }) => {
             <LoadWheel />
           ) : sortedProducts.length !== 0 ? (
             <ul>
-              {" "}
+              {' '}
               {sortedProducts.slice(firstProduct, lastProduct).map((i, key) => {
                 return (
-                  <ProductCard
-                    id={i.id}
-                    key={key}
-                    productName={i.productName}
-                    brandName={i.brandName}
-                    description={i.description}
-                    highestPrice={i.highestPrice}
-                    lowestPrice={i.lowestPrice}
-                    smallImageFile1={i.smallImageFile1}
-                    smallImageFile2={i.smallImageFile2}
-                  />
+                  <div key={`product-card-${key}`}>
+                    <ProductCard
+                      id={i.id}
+                      key={key}
+                      productName={i.productName}
+                      brandName={i.brandName}
+                      description={i.description}
+                      highestPrice={i.highestPrice}
+                      lowestPrice={i.lowestPrice}
+                      smallImageFile1={i.smallImageFile1}
+                      smallImageFile2={i.smallImageFile2}
+                    />
+                  </div>
                 );
               })}
             </ul>

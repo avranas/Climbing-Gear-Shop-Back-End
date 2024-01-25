@@ -6,6 +6,7 @@ import { loadOrder, selectOrder } from '../../slices/orderSlice';
 import getFullUTCDay from '../../utils/getFullDay';
 import penniesToUSD from '../../utils/penniesToUSD';
 import './OrderDetailsPage.css';
+import ItemInOrder from "../../components/ItemInOrder/ItemInOrder";
 
 const OrderDetailsPage = (props) => {
   const { id } = useParams();

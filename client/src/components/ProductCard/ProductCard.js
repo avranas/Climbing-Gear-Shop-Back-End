@@ -15,12 +15,10 @@ const ProductCard = (props) => {
         let res = await axios.get(
           `/generate-presigned-url/${props.smallImageFile1}`
         );
-        console.log('got url: ', res.data.url);
         setImageUrl1(res.data.url);
         res = await axios.get(
           `/generate-presigned-url/${props.smallImageFile2}`
         );
-        console.log('got url: ', res.data.url);
         setImageUrl2(res.data.url);
       } catch (err) {
         console.log('Error fetching signed URL', err);

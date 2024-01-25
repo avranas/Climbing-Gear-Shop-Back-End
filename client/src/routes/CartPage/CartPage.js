@@ -49,14 +49,11 @@ const CartPage = (props) => {
         </div>
       ) : (
         cartData.cartItems.map((i, key) => {
-          {
-            console.log(i);
-          }
           return (
             <div key={key}>
               <ItemInCart
                 id={i.id}
-                productId={i.product.productId}
+                productId={i.product.id}
                 imgFile={i.product.smallImageFile1}
                 optionType={i.product.optionType}
                 optionSelection={i.optionSelection}

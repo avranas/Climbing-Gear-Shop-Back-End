@@ -1,19 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  selectCart,
-  loadCartData,
-  changeQuantityInGuestCart,
-  deleteFromGuestCart,
-} from "../../slices/cartSlice";
-import penniesToUSD from "../../utils/penniesToUSD";
-import { Link, useNavigate } from "react-router-dom";
-import "./CartPage.css";
-import CartQuantity from "../../components/CartQuantity/CartQuantity";
-import axios from "axios";
-import redX from "../../images/red-x.png";
-import LoadWheel from "../../components/LoadWheel/LoadWheel";
-import config from "../../config";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCart, loadCartData } from '../../slices/cartSlice';
+import penniesToUSD from '../../utils/penniesToUSD';
+import { Link, useNavigate } from 'react-router-dom';
+import './CartPage.css';
+import axios from 'axios';
+import LoadWheel from '../../components/LoadWheel/LoadWheel';
+import ItemInCart from '../../components/ItemInCart/ItemInCart';
 
 /*
   Loading cart data with a useEffect is not necessary, because the
@@ -25,65 +18,18 @@ const CartPage = (props) => {
   const navigate = useNavigate();
   const cart = useSelector(selectCart);
   const cartData = cart.data;
-  const [quantityChangeError, setQuantityChangeError] = useState("");
-
-  const handleQuantitySelection = async (e, cartItem) => {
-    const response = await axios("/authenticated");
-    let value = e.target.value;
-    //Check to make sure there are enough items in stock
-    const amountInStock = cartItem.product.productOptions[0].amountInStock;
-    if (value > amountInStock) {
-      value = amountInStock;
-      if (value === 0) {
-        setQuantityChangeError("This item is sold out.");
-      } else {
-        setQuantityChangeError("Not enough in stock. Setting to the max.");
-      }
-    }
-
-    if (response.data) {
-      const requestBody = {
-        quantity: Number(value),
-        productId: cartItem.product.id,
-        optionSelection: cartItem.optionSelection,
-      };
-      //Change quantity in cart on server
-      await axios.put("/server-cart", requestBody);
-    } else {
-      //Change quantity in guest cart
-      changeQuantityInGuestCart(cartItem, value);
-    }
-    loadCartData(dispatch);
-  };
-
-  const deleteItem = async (e) => {
-    try {
-      const id = e.target.value;
-      const response = await axios("/authenticated");
-      if (response.data) {
-        //Delete from cart on server
-        await axios.delete(`/server-cart/${id}`);
-      } else {
-        //Delete from guest cart
-        deleteFromGuestCart(id);
-      }
-      loadCartData(dispatch);
-    } catch (err) {
-      loadCartData(dispatch);
-    }
-  };
 
   const continueToCheckout = async () => {
-    const response = await axios("/authenticated");
+    const response = await axios('/authenticated');
     if (response.data) {
-      navigate("/checkout");
+      navigate('/checkout');
     } else {
-      navigate("/login?next=checkout");
+      navigate('/login?next=checkout');
     }
   };
 
   const backToProducts = async () => {
-    navigate("/products/0");
+    navigate('/products/0');
   };
 
   useEffect(() => {
@@ -103,46 +49,23 @@ const CartPage = (props) => {
         </div>
       ) : (
         cartData.cartItems.map((i, key) => {
+          {
+            console.log(i);
+          }
           return (
-            <div className="cart-item" key={key}>
-              <div className="cart-item-image">
-                <Link to={`/product/${i.product.id}`}>
-                  <img
-                    src={`/images/${i.product.smallImageFile1}`}
-                    alt="cart item"
-                  />
-                </Link>
-              </div>
-              <div className="cart-item-content">
-                <p>
-                  {i.product.optionType}: {i.optionSelection}
-                </p>
-                <p>{i.product.brandName}</p>
-                <p>{i.product.productName}</p>
-                <strong>
-                  <p>{penniesToUSD(i.product.productOptions[0].price)}</p>
-                </strong>
-                <div className="cart-item-options">
-                  <CartQuantity
-                    handleSelection={handleQuantitySelection}
-                    cartItem={i}
-                    defaultValue={i.quantity}
-                  />
-                  <button
-                    className="small-button"
-                    onClick={deleteItem}
-                    value={i.id}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-              {quantityChangeError && (
-                <div className="input-error-box">
-                  <img alt="error" src={redX} />
-                  <p>{quantityChangeError}</p>
-                </div>
-              )}
+            <div key={key}>
+              <ItemInCart
+                id={i.id}
+                productId={i.product.productId}
+                imgFile={i.product.smallImageFile1}
+                optionType={i.product.optionType}
+                optionSelection={i.optionSelection}
+                brandName={i.product.brandName}
+                productName={i.product.productName}
+                cartItem={i}
+                price={i.product.productOptions[0].price}
+                quantity={i.quantity}
+              />
             </div>
           );
         })

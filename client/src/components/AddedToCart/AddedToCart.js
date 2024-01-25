@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { selectNewestCartItem } from '../../slices/newestCartItemSlice';
 import { selectProduct } from '../../slices/productSlice';
 import greenCheckmark from '../../images/checkmark2.png';
 import './AddedToCart.css';
+import axios from "axios";
 
 const AddedToCart = (props) => {
   const newestCartItem = useSelector(selectNewestCartItem);

@@ -6,13 +6,29 @@ import { loadOrder, selectOrder } from '../../slices/orderSlice';
 import getFullUTCDay from '../../utils/getFullDay';
 import penniesToUSD from '../../utils/penniesToUSD';
 import './OrderDetailsPage.css';
+import axios from 'axios';
 
 const OrderDetailsPage = (props) => {
   const { id } = useParams();
   const order = useSelector(selectOrder);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [imageUrl, setImageUrl] = useState('');
 
+  useEffect
+  (() => {
+    async function getSignedUrl() {
+      try {
+        let res = await axios.get(
+          `/generate-presigned-url/${i.product.smallImageFile1}`
+        );
+        setImageUrl(res.data.url);
+      } catch (err) {
+        console.log('Error fetching signed URL', err);
+      }
+    }
+    getSignedUrl();
+  }, []);
   useEffect(() => {
     dispatch(loadOrder(id));
   }, [dispatch, navigate, id]);
@@ -122,7 +138,7 @@ const OrderDetailsPage = (props) => {
                   <Link to={`/product/${i.product.id}`}>
                     <div className="order-item-image">
                       <img
-                        src={`/images/${i.product.smallImageFile1}`}
+                        src={imageUrl}
                         alt="order item"
                       />
                     </div>

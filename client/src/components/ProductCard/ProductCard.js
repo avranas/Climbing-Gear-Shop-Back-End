@@ -30,20 +30,16 @@ const ProductCard = (props) => {
   return (
     <li className="product-card styled-box styled-link-box">
       <Link to={`/product/${props.id}`}>
-        
-        <div className="product-image">
-          {
-            imageUrl1 && imageUrl2 &&
-            <div>
-              <div className="top-image">
-                <img alt="product" src={imageUrl1} />
-              </div>
-              <div className="bottom-image">
-                <img alt="product" src={imageUrl2} />
-              </div>
+        {imageUrl1 && imageUrl2 && (
+          <div className="product-image">
+            <div className="top-image">
+              <img alt="product" src={imageUrl1} />
             </div>
-          }
-        </div>
+            <div className="bottom-image">
+              <img alt="product" src={imageUrl2} />
+            </div>
+          </div>
+        )}
         <div className="product-info">
           <h3>{props.brandName}</h3>
           <p>{props.productName}</p>

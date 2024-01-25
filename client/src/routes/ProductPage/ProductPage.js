@@ -1,18 +1,18 @@
-import { useParams } from "react-router-dom";
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { loadProduct, selectProduct } from "../../slices/productSlice";
-import "./ProductPage.css";
-import redX from "../../images/red-x.png";
-import warning from "../../images/warning.png";
-import penniesToUSD from "../../utils/penniesToUSD";
-import axios from "axios";
-import ProductNavigationBar from "../../components/ProductNavBar/ProductNavBar";
-import AddedToCartWindow from "../../components/AddedToCart/AddedToCart";
-import { loadCartData } from "../../slices/cartSlice";
-import QuantitySelection from "../../components/Quantity/Quantity";
-import { v4 as uuidv4 } from "uuid";
-import LoadWheel from "../../components/LoadWheel/LoadWheel";
+import { useParams } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadProduct, selectProduct } from '../../slices/productSlice';
+import './ProductPage.css';
+import redX from '../../images/red-x.png';
+import warning from '../../images/warning.png';
+import penniesToUSD from '../../utils/penniesToUSD';
+import axios from 'axios';
+import ProductNavigationBar from '../../components/ProductNavBar/ProductNavBar';
+import AddedToCartWindow from '../../components/AddedToCart/AddedToCart';
+import { loadCartData } from '../../slices/cartSlice';
+import QuantitySelection from '../../components/Quantity/Quantity';
+import { v4 as uuidv4 } from 'uuid';
+import LoadWheel from '../../components/LoadWheel/LoadWheel';
 
 //Props are productName, brandName, description, price, and imageURL,
 const ProductPage = (props) => {
@@ -21,23 +21,38 @@ const ProductPage = (props) => {
   const product = useSelector(selectProduct);
   const productData = product.data;
   const [options, setOptions] = useState([]);
-  const [optionSelection, setOptionSelection] = useState("");
-  const [missingSelectionError, setMissingSelectionError] = useState("");
-  const [displayPrice, setDisplayPrice] = useState("");
+  const [optionSelection, setOptionSelection] = useState('');
+  const [missingSelectionError, setMissingSelectionError] = useState('');
+  const [displayPrice, setDisplayPrice] = useState('');
   const [currentAmountInStock, setCurrentAmountInStock] = useState(-1);
-  const [outOfStockError, setOutOfStockError] = useState("");
-  const [lowOnStockWarning, setLowOnStockWarning] = useState("");
+  const [outOfStockError, setOutOfStockError] = useState('');
+  const [lowOnStockWarning, setLowOnStockWarning] = useState('');
   const [addedToCartWindowOpen, setAddedToCartWindowOpen] = useState(false);
   const [quantityDisabled, setQuantityDisabled] = useState(true);
   const quantitySelectRef = useRef();
+  const [imageUrl, setImageUrl] = useState('');
+
+  useEffect(() => {
+    async function getSignedUrl() {
+      try {
+        let res = await axios.get(
+          `/generate-presigned-url/${productData.largeImageFile}`
+        );
+        setImageUrl(res.data.url);
+      } catch (err) {
+        console.log('Error fetching signed URL', err);
+      }
+    }
+    getSignedUrl();
+  }, []);
 
   const addToCart = async () => {
     //options[0] is 'Select'
     if (optionSelection === options[0]) {
-      setMissingSelectionError("A selection is required");
+      setMissingSelectionError('A selection is required');
       return;
     } else {
-      setMissingSelectionError("");
+      setMissingSelectionError('');
     }
     if (currentAmountInStock === 0) {
       return;
@@ -51,13 +66,13 @@ const ProductPage = (props) => {
       };
       //If the user is logged in, store cart data in the server,
       //Otherwise, store it in localStorage
-      const loggedInCheck = await axios("/authenticated");
+      const loggedInCheck = await axios('/authenticated');
       //This will return true if the user is logged in
       if (loggedInCheck.data) {
         //Add to cart in server
-        const response = await axios.post("/server-cart", newCartItem);
+        const response = await axios.post('/server-cart', newCartItem);
         console.log(response);
-        if (response.data === "Not enough in stock. Setting to the max.") {
+        if (response.data === 'Not enough in stock. Setting to the max.') {
           setOutOfStockError(response.data);
           loadCartData(dispatch);
           return;
@@ -68,11 +83,11 @@ const ProductPage = (props) => {
         //localStorage can only accept strings, so I have to use this workaround
         //where I save stringified arrays, then retrieve the strings, and parse
         //them into JSON
-        let guestCart = JSON.parse(localStorage.getItem("guestCart"));
+        let guestCart = JSON.parse(localStorage.getItem('guestCart'));
         if (!guestCart) {
           const newArray = [];
           newArray.push(newCartItem);
-          localStorage.setItem("guestCart", JSON.stringify(newArray));
+          localStorage.setItem('guestCart', JSON.stringify(newArray));
         } else {
           //If this item is already in the cart, update it with a newer quantity
           //instead of adding it to the cart
@@ -98,16 +113,16 @@ const ProductPage = (props) => {
           if (!itemAlreadyInCart) {
             guestCart.push(newCartItem);
           }
-          localStorage.setItem("guestCart", JSON.stringify(guestCart));
+          localStorage.setItem('guestCart', JSON.stringify(guestCart));
           if (outOfStockErrorFound) {
-            setOutOfStockError("Not enough in stock. Setting to the max.");
+            setOutOfStockError('Not enough in stock. Setting to the max.');
             loadCartData(dispatch);
             return;
           }
         }
       }
       dispatch({
-        type: "newestCartItem/setNewestCartItem",
+        type: 'newestCartItem/setNewestCartItem',
         payload: newCartItem,
       });
       await loadCartData(dispatch);
@@ -125,8 +140,8 @@ const ProductPage = (props) => {
     setOptionSelection(e.target.value);
     if (e.target.value === options[0]) {
       setQuantityDisabled(true);
-      setOutOfStockError("");
-      setLowOnStockWarning("");
+      setOutOfStockError('');
+      setLowOnStockWarning('');
     } else {
       setQuantityDisabled(false);
     }
@@ -145,26 +160,26 @@ const ProductPage = (props) => {
     setDisplayPrice(foundOption.price);
     setCurrentAmountInStock(newAmountInStock);
     if (newAmountInStock === 0) {
-      setOutOfStockError("This selection is out of stock");
+      setOutOfStockError('This selection is out of stock');
       setQuantityDisabled(true);
-      setLowOnStockWarning("");
+      setLowOnStockWarning('');
     } else if (newAmountInStock === 1) {
       setLowOnStockWarning(
         `There is only ${newAmountInStock} left in stock! Buy now!`
       );
-      setOutOfStockError("");
+      setOutOfStockError('');
     } else if (newAmountInStock <= 5) {
       setLowOnStockWarning(
         `There are only ${newAmountInStock} of these in stock! Buy now!`
       );
-      setOutOfStockError("");
+      setOutOfStockError('');
     } else {
-      setOutOfStockError("");
+      setOutOfStockError('');
       setQuantityDisabled(false);
-      setLowOnStockWarning("");
+      setLowOnStockWarning('');
     }
     //Erase missing selection error if there is one
-    setMissingSelectionError("");
+    setMissingSelectionError('');
   }, [optionSelection, setOutOfStockError, productData.productOptions]);
 
   useEffect(() => {
@@ -185,17 +200,17 @@ const ProductPage = (props) => {
     } else {
       switch (productData.optionType) {
         //Sort these reverse-alphabetically
-        case "Size":
+        case 'Size':
           newOptions.sort((a, b) => b.localeCompare(a));
           break;
         //Sort these alphabetically
-        case "Length":
+        case 'Length':
         default:
           newOptions.sort((a, b) => a.localeCompare(b));
           break;
       }
     }
-    newOptions.unshift("Select");
+    newOptions.unshift('Select');
     setQuantityDisabled(true);
     if (productData.productOptions.length === 1) {
       setOptionSelection(newOptions[1]);
@@ -208,12 +223,12 @@ const ProductPage = (props) => {
 
   useEffect(() => {
     const handleClick = (e) => {
-      if (e.target.matches("[data-overlay]")) {
+      if (e.target.matches('[data-overlay]')) {
         setAddedToCartWindowOpen(false);
       }
     };
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
+    document.addEventListener('click', handleClick);
+    return () => document.removeEventListener('click', handleClick);
   }, [addedToCartWindowOpen]);
 
   //Renders a page for one product
@@ -232,10 +247,7 @@ const ProductPage = (props) => {
       ) : (
         <div id="product" className="styled-box">
           <section id="product-image">
-            <img
-              alt="product"
-              src={`/images/${productData.largeImageFile}`}
-            />
+            <img alt="product" src={imageUrl} />
           </section>
           <div id="product-page-spacer"></div>
           <section id="product-info">
@@ -281,7 +293,7 @@ const ProductPage = (props) => {
               )}
               <div className="option-box">
                 <label className="option-label" htmlFor="quantity">
-                  Quantity{" "}
+                  Quantity{' '}
                 </label>
                 <br />
                 <QuantitySelection

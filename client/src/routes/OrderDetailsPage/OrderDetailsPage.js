@@ -13,22 +13,7 @@ const OrderDetailsPage = (props) => {
   const order = useSelector(selectOrder);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [imageUrl, setImageUrl] = useState('');
 
-  useEffect
-  (() => {
-    async function getSignedUrl() {
-      try {
-        let res = await axios.get(
-          `/generate-presigned-url/${i.product.smallImageFile1}`
-        );
-        setImageUrl(res.data.url);
-      } catch (err) {
-        console.log('Error fetching signed URL', err);
-      }
-    }
-    getSignedUrl();
-  }, []);
   useEffect(() => {
     dispatch(loadOrder(id));
   }, [dispatch, navigate, id]);
@@ -134,28 +119,17 @@ const OrderDetailsPage = (props) => {
           <div id="order-details-items">
             {order.data.orderItems.map((i, key) => {
               return (
-                <div className="order-item" key={key}>
-                  <Link to={`/product/${i.product.id}`}>
-                    <div className="order-item-image">
-                      <img
-                        src={imageUrl}
-                        alt="order item"
-                      />
-                    </div>
-                  </Link>
-                  <ul className="order-item-content">
-                    <li>
-                      {i.product.optionType}: {i.optionSelection}
-                    </li>
-                    <li>{i.product.brandName}</li>
-                    <li>{i.product.productName}</li>
-                    <strong>
-                      <li>{penniesToUSD(i.price)}</li>
-                    </strong>
-                    <li className="order-item-options">
-                      {`Quantity: ${i.quantity}`}
-                    </li>
-                  </ul>
+                <div key={key}>
+                  <OrderItem 
+                    imgFile={i.product.smallImageFile1}
+                    productId={i.product.id}
+                    optionType={i.product.optionType}
+                    optionSelection={i.product.optionSelection}
+                    brandName={i.product.brandName}
+                    productName={i.product.productName}
+                    price={i.price}
+                    quantity={i.quantity}
+                  />
                 </div>
               );
             })}

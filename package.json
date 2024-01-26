@@ -86,6 +86,7 @@
     "jest": "^27.5.1",
     "react-test-renderer": "^18.2.0",
     "test": "^3.2.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack-cli": "^5.1.4"
   }
 }

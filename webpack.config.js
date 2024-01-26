@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
@@ -92,6 +93,9 @@ module.exports = {
       favicon: path.resolve(__dirname, './client/src/images/smol-logo.png'),
       template: './client/public/index.html',
     }),
-    new Dotenv()
+    new Dotenv(),
   ],
+  optimization: {
+    minimizer: [new UglifyJsPlugin()],
+  },
 };

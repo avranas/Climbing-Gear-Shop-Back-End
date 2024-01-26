@@ -89,7 +89,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      // favicon: path.resolve(__dirname, './client/assets/images/mm.ico'),
+      favicon: path.resolve(__dirname, './client/src/images/smol-logo.png'),
       template: './client/public/index.html',
     }),
     new Dotenv()

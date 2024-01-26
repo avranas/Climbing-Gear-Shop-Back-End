@@ -139,6 +139,7 @@
   .product-card {
     width: 16rem;
     padding: 1rem;
+    min-height: 0;
   }
 
   .bottom-image img {

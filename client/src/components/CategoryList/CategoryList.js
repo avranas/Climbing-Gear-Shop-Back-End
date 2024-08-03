@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import shoesPic from "../../images/shoes.png";
-import harnessPic from "../../images/harness.png";
-import ropePic from "../../images/rope.png";
-import carabinerPic from "../../images/carabiner.png";
-import chalkPic from "../../images/chalk.png";
+import shoesPic from "../../images/shoes.webp";
+import harnessPic from "../../images/harness.webp";
+import ropePic from "../../images/rope.webp";
+import carabinerPic from "../../images/carabiner.webp";
+import chalkPic from "../../images/chalk.webp";
 import "./CategoryList.css";
 
 const CategoryList = (props) => {

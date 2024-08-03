@@ -11,7 +11,11 @@ const path = require('path');
 const AWS = require('aws-sdk');
 AWS.config.update({ region: 'us-east-1' });
 const s3 = new AWS.S3();
+var compression = require('compression')
+
 console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+
+app.use(compression());
 
 app.use(
   cors({

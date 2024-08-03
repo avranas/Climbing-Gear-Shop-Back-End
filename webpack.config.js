@@ -1,41 +1,33 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+require('dotenv').config();
+const TerserPlugin = require("terser-webpack-plugin");
 
+
+console.log('NODE_ENV', process.env.NODE_ENV);
 module.exports = {
-  entry: [
-    // entry point of our app
-    './client/src/index.js',
-  ],
+  entry: './client/src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: 'bundle.js',
+    filename: '[name].[contenthash].js',
   },
-  devtool: 'eval-source-map',
-  mode: 'development',
+  devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'eval-source-map',
+  mode: process.env.NODE_ENV,
   devServer: {
-    // Required for Docker to work with dev server
     host: '0.0.0.0',
-    //host: localhost,
     port: 3002,
-    //enable HMR on the devServer
     hot: true,
-    // fallback to root for other urls
     historyApiFallback: true,
-
     static: {
-      // match the output path
       directory: path.resolve(__dirname, 'dist'),
-      //match the output 'publicPath'
       publicPath: '/',
     },
-
     headers: { 'Access-Control-Allow-Origin': '*' },
-    // proxy is required in order to make api calls to express server while using hot-reload webpack server
-    // routes api fetch requests from localhost:8080/api/* (webpack dev server) to localhost:3000/api/* (where our Express server is running)
     proxy: {
       '/**': {
         target: 'http://localhost:3000/',
@@ -52,12 +44,11 @@ module.exports = {
         options: { presets: ['@babel/env', '@babel/preset-react'] },
       },
       {
-        test: /.(css)$/,
-        // exclude: /node_modules/,
+        test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif|webp)$/i,
         use: [
           {
             loader: 'file-loader',
@@ -65,14 +56,10 @@ module.exports = {
         ],
       },
       {
-        test: /\.(scss)$/,
+        test: /\.scss$/,
         use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-          },
+          'style-loader',
+          'css-loader',
           {
             loader: 'postcss-loader',
             options: {
@@ -81,9 +68,7 @@ module.exports = {
               },
             },
           },
-          {
-            loader: 'sass-loader',
-          },
+          'sass-loader',
         ],
       },
     ],
@@ -94,8 +79,23 @@ module.exports = {
       template: './client/public/index.html',
     }),
     new Dotenv(),
+    new CompressionPlugin({
+      filename: '[path][base].gz',
+      algorithm: 'gzip',
+      test: /\.(js|css|html)$/,
+      threshold: 8192,
+      minRatio: 0.8,
+    }),
+    new CleanWebpackPlugin(),
   ],
   optimization: {
-    minimizer: [new UglifyJsPlugin()],
+    splitChunks: {
+      chunks: 'all',
+    },
+    minimizer: [
+      `...`,
+      new TerserPlugin()
+    ],
+    runtimeChunk: 'single',
   },
 };

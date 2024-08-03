@@ -25,10 +25,10 @@ if (nodeEnv === "production") {
       timestamps: false,
       freezeTableName: true,
       dialectOptions: {
-        ssl: {
-          require: true,
-          rejectUnauthorized: false,
-        },
+        // ssl: {
+        //   require: true,
+        //   rejectUnauthorized: false,
+        // },
       },
     }
   );

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SearchBar.css";
 import grayX from '../../images/gray-x.png'
-import search from '../../images/search.png'
+import search from '../../images/search.webp'
 
 const SearchBar = (props) => {
   const navigate = useNavigate();

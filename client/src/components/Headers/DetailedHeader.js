@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 import './Header.css';
 import { loadCartData, selectCart } from '../../slices/cartSlice';
 import axios from 'axios';
-import logo from '../../images/logo.png';
+import logo from '../../images/logo.webp';
 import smolLogo from '../../images/smol-logo.png';
 import cartIcon from '../../images/cart.png';
 

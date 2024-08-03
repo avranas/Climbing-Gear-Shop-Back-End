@@ -183,6 +183,7 @@ const LoginPage = ({ next, error }) => {
         </div>
         <div className="form-break"></div>
         <button
+          aria-label="Submit"
           className="important-button"
           type="submit"
           value="Submit"
@@ -199,10 +200,10 @@ const LoginPage = ({ next, error }) => {
       </div>
       <h3>Or login using:</h3>
       <div id="oauth-buttons">
-        <button className="oauth-button" id="github" onClick={loginWithGitHub}>
+        <button aria-label="Github login" className="oauth-button" id="github" onClick={loginWithGitHub}>
           <img alt="github" src={github} />
         </button>
-        <button className="oauth-button" id="google" onClick={loginWithGoogle}>
+        <button aria-label="Google login" className="oauth-button" id="google" onClick={loginWithGoogle}>
           <img alt="google" src={google} />
         </button>
       </div>

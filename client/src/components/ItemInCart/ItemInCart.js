@@ -97,6 +97,7 @@ const ItemInCart = (props) => {
             defaultValue={props.quantity}
           />
           <button
+            aria-label="delete item"
             className="small-button"
             onClick={deleteItem}
             value={props.id}

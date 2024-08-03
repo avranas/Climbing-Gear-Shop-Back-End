@@ -70,7 +70,7 @@ const CartPage = (props) => {
       <div id="cart-footer">
         {cartData.cartItems.length === 0 ? (
           <Link to="/products/0">
-            <button className="important-button">Contine shopping</button>
+            <button aria-label="Continue shopping" className="important-button">Continue shopping</button>
           </Link>
         ) : (
           <div id="cart-footer">
@@ -80,10 +80,11 @@ const CartPage = (props) => {
               )}`}</p>
             )}
             <div id="cart-buttons">
-              <button onClick={continueToCheckout} className="important-button">
+              <button aria-label="Continue to checkout" onClick={continueToCheckout} className="important-button">
                 Continue to checkout
               </button>
               <button
+                aria-label="Continue shopping"
                 onClick={backToProducts}
                 className="semi-important-button"
               >

@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 const Dotenv = require('dotenv-webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 require('dotenv').config();
@@ -74,6 +76,11 @@ module.exports = {
     ],
   },
   plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'robots.txt', to: 'robots.txt' }, // Adjust the path to your robots.txt file
+      ],
+    }),
     new HtmlWebpackPlugin({
       favicon: path.resolve(__dirname, './client/src/images/smol-logo.png'),
       template: './client/public/index.html',

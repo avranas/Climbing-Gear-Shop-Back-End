@@ -323,6 +323,7 @@ const ProductPage = (props) => {
             )}
             <div id="product-footer">
               <button
+                aria-label="Add to cart"
                 data-testid="add-to-cart-button"
                 onClick={addToCart}
                 className="important-button"

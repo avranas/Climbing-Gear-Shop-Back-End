@@ -51,6 +51,7 @@ const AddedToCart = (props) => {
             <div id="added-to-cart-buttons">
               <div id="button-container">
                 <button
+                  aria-label="Add to cart"
                   onClick={props.closeWindow}
                   className="important-button"
                 >
@@ -59,7 +60,7 @@ const AddedToCart = (props) => {
               </div>
               <div id="button-container">
                 <Link to="/cart">
-                  <button className="semi-important-button">Go to cart</button>
+                  <button aria-label="Go to cart" className="semi-important-button">Go to cart</button>
                 </Link>
               </div>
             </div>

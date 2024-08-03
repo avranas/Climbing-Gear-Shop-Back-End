@@ -33,15 +33,16 @@ const SearchBar = (props) => {
 
   return (
     <div id="search-bar" data-testid="searchbar">
-      <input
+      <textarea
         type="text"
         id="search-text"
         name="search"
         value={searchBarText}
         onChange={handleChange}
         onKeyUp={handleKeyPress}
-      ></input>
+      ></textarea>
       <button
+        aria-label="Search"
         id="search-button"
         data-testid="searchbar-button"
         onClick={handleSubmit}

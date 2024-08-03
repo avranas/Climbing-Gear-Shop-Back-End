@@ -29,24 +29,24 @@ const HeaderButtons = (props) => {
       ) : userIsLoggedIn === false ? (
         <div>
           <Link to="/login">
-            <button id="left-button" className="small-button">
+            <button aria-label="login" id="left-button" className="small-button">
               Login
             </button>
           </Link>
           <Link to="/register">
-            <button type="button" className="small-button">
+            <button aria-label="register" type="button" className="small-button">
               Register
             </button>
           </Link>
         </div>
       ) : (
         <div>
-          <button onClick={handleLogout} className="small-button">
+          <button aria-label="logout" onClick={handleLogout} className="small-button">
             Logout
           </button>
 
           <Link to="/orders/0">
-            <button type="button" className="small-button">
+            <button aria-label="orders" type="button" className="small-button">
               Orders
             </button>
           </Link>

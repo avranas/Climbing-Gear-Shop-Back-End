@@ -12,7 +12,7 @@ const HomePage = (props) => {
       </section>
       <section id="shop-all-products-button-holder">
         <Link to="/products/0">
-          <button className="important-button">Shop all products</button>
+          <button aria-label="All products" className="important-button">Shop all products</button>
         </Link>
       </section>
       <h2 className="container">Shop By Category</h2>

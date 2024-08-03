@@ -9,12 +9,13 @@ const NavButtons = (props) => {
       <div className="direction-button-container">
         {!props.prevDisabled ? (
           <Link to={props.prevLink}>
-            <button id="prev-active" className="direction-button styled-box">
+            <button aria-label="Previous" id="prev-active" className="direction-button styled-box">
               Previous
             </button>
           </Link>
         ) : (
           <button
+            aria-label="Previous"
             disabled
             id="prev"
             className="direction-button direction-button-disabled styled-box"
@@ -26,7 +27,7 @@ const NavButtons = (props) => {
       <div className="direction-button-container">
         {!props.nextDisabled ? (
           <Link to={props.nextLink}>
-            <button className="direction-button styled-box" id="next-active">
+            <button aria-label="Next" className="direction-button styled-box" id="next-active">
               Next
             </button>
           </Link>
@@ -34,6 +35,7 @@ const NavButtons = (props) => {
           <button
             disabled
             id="prev"
+            aria-label="Next"
             className="direction-button direction-button-disabled styled-box"
           >
             Next

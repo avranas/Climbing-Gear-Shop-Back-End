@@ -135,12 +135,13 @@ footer p {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   border-radius: 0.3rem;
-  background-color: #1c7eff;
+  background-color: #1c1cff;
   border: none;
   font-weight: 500;
   margin: 0.25rem;
   margin-bottom: 0;
   width: 5.5rem;
+  height: 3rem;
 }
 
 .small-button:hover {
@@ -174,6 +175,8 @@ input[type="checkbox"] {
     font-size: 0.75rem;
     width: 4.4rem;
     height: 1.6rem;
+    height: 2.5rem;
+
   }
 
   .important-button {
@@ -192,6 +195,7 @@ input[type="checkbox"] {
 @media only screen and (max-width: 512px) {
   .small-button {
     font-size: 0.7rem;
+    height: 2rem;
   }
 
   .important-button {
